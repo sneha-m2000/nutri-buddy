@@ -53,7 +53,8 @@ const NutriBuddyHeader = () => {
                     <div className="flex items-center justify-between h-20">
                         {/* Logo */}
                         <div className="flex items-center space-x-3">
-                            <img src="/src/assets/logo1.png" alt="Nutri Buddy Logo" className="w-20 h-20 object-contain" />
+                            {/* <img src="/src/assets/logo1.png" alt="Nutri Buddy Logo" className="w-20 h-20 object-contain" /> */}
+                            <img src="/logo1.png" alt="Nutri Buddy Logo" className="w-20 h-20 object-contain" />
 
                             <div>
                                 <h1
