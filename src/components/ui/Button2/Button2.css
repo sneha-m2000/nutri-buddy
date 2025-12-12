@@ -1,0 +1,120 @@
+@import url('https://fonts.googleapis.com/css?family=Source+Code+Pro:200,900');
+@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda+SC:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Playfair+Display+SC:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Playfair:ital,opsz,wght@0,5..1200,300..900;1,5..1200,300..900&display=swap');
+
+/* ================= VARIABLES ================= */
+:root {
+  --text-color: #fff;        /* Teal green text */
+  --shadow-color: rgba(0, 0, 0, 0.35);
+  --btn-color: #000000;         /* Pure Black Button */
+  --bg-color: #000000;          /* Black bg for effects */
+  --content: "Explore Now";     /* Change as needed */
+}
+
+/* ============================================ */
+* { box-sizing: border-box; }
+
+.hover-btn-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+/* ============ BUTTON MAIN STYLE ============== */
+.hover-btn {
+  position: relative;
+  padding: 4px 10px;           /* 🔥padding */
+  border: 1px solid #004545;
+  cursor: pointer;
+  font-family: 'Playfair Display', 'serif';
+  font-weight: 900;
+  font-size: 22px;             /* Slightly smaller */
+  color: #306c6c;
+  background-color: var(--btn-color);
+  box-shadow: var(--shadow-color) 2px 2px 18px;
+  border-radius: 6px;
+  overflow: hidden;
+  z-index: 1;
+  margin-bottom: 4px;
+}
+
+/* Remove weird shadow on focus */
+.hover-btn:focus {
+  outline: none;
+  box-shadow: var(--shadow-color) 2px 2px 18px;
+}
+
+/* =========== TEXT OVERLAY EFFECTS ============ */
+.hover-btn .right::after,
+.hover-btn::after {
+  content: var(--content);
+  position: absolute;
+  white-space: nowrap;
+  pointer-events: none;
+  color: var(--text-color);
+}
+
+.hover-btn::after {
+  font-weight: 200;
+  top: -28px;
+  left: -18px;
+}
+
+/* ============ SPLIT LAYERS =========== */
+.hover-btn .right,
+.hover-btn .left {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+}
+
+.hover-btn .right { left: 66%; }
+.hover-btn .left { right: 66%; }
+
+/* Right Hover Effect */
+.hover-btn .right::after {
+  top: -28px;
+  left: calc(-66% - 20px);
+  background-color: var(--btn-color);
+  color: transparent;
+  transition: transform .4s ease-out;
+  transform: translate(0, -90%);
+}
+
+.hover-btn:hover .right::after {
+  transform: translate(0, -47%);
+}
+
+.hover-btn .right:hover::after {
+  transform: translate(0, -50%) rotate(-7deg);
+}
+
+.hover-btn .left:hover ~ .right::after {
+  transform: translate(0, -50%) rotate(7deg);
+}
+
+/* =============== BUBBLES REMOVED (optional) ============== */
+/* If you want bubbles, keep this. If not, remove the whole block */
+.hover-btn::before {
+  content: '';
+  pointer-events: none;
+  opacity: .4;
+  background:
+    radial-gradient(circle at 20% 35%, transparent 0, transparent 2px, var(--text-color) 3px, var(--text-color) 4px, transparent 4px),
+    radial-gradient(circle at 75% 44%, transparent 0, transparent 2px, var(--text-color) 3px, var(--text-color) 4px, transparent 4px),
+    radial-gradient(circle at 46% 52%, transparent 0, transparent 4px, var(--text-color) 5px, var(--text-color) 6px, transparent 6px);
+
+  width: 100%;
+  height: 300%;
+  top: 0;
+  left: 0;
+  position: absolute;
+  animation: bubbles 5s linear infinite both;
+}
+
+@keyframes bubbles {
+  from { transform: translateY(0); }
+  to { transform: translateY(-66.666%); }
+}

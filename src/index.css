@@ -1,0 +1,92 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* dark circular shadow behind plate */
+section::after {
+  content: "";
+  position: absolute;
+  width: 44rem;
+  height: 44rem;
+  right: 56%;
+  bottom: -6rem;
+  background: rgba(0, 0, 0, 0.85);
+  border-radius: 50%;
+  z-index: -1;
+  transform: translateX(10%);
+}
+
+@keyframes fadeInHeader {
+  0% { opacity: 0; transform: translateY(-20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+.header-fade {
+  animation: fadeInHeader 0.8s ease-out forwards;
+}
+
+/* subtle overlay for video (improves contrast) */
+.header-video-overlay {
+  background: linear-gradient(to bottom, rgba(0,0,0,0.08), rgba(0,0,0,0.18));
+}
+
+/* ensure body / root don't add unexpected top color */
+html, body, #root {
+  height: 100%;
+  background: #000; /* optional — change to your site bg */
+}
+
+/* whatweoffer.css
+   - jump-in keyframes: large start translateY (hidden), quick overshoot up, small bounce, settle
+   - tuned to be snappy & attention-grabbing
+*/
+
+@keyframes plateJumpIn {
+  0% {
+    transform: translateY(240px) scale(0.98);
+    opacity: 0;
+  }
+  45% {
+    transform: translateY(-20px) scale(1.03); /* overshoot up */
+    opacity: 1;
+  }
+  70% {
+    transform: translateY(8px) scale(0.995); /* small settle back */
+  }
+  100% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+/* Utility class: begin with plate off-screen bottom + invisible (we used translate-y-52 & opacity-0 via Tailwind too)
+   .jump-in applies the jump animation
+*/
+.jump-in {
+  animation: plateJumpIn 700ms cubic-bezier(0.22, 1.8, 0.35, 1) forwards;
+  /* forwards keeps final state (translateY 0 + opacity 1) */
+  will-change: transform, opacity;
+  /* small shadow lift while animating (optional) */
+  filter: drop-shadow(0 18px 30px rgba(0, 0, 0, 0.25));
+}
+
+/* optional: reduce animation on small screens so it doesn't cover too much */
+@media (max-width: 768px) {
+  @keyframes plateJumpIn {
+    0% {
+      transform: translateY(160px) scale(0.98);
+      opacity: 0;
+    }
+    45% {
+      transform: translateY(-12px) scale(1.02);
+      opacity: 1;
+    }
+    70% {
+      transform: translateY(6px) scale(0.997);
+    }
+    100% {
+      transform: translateY(0) scale(1);
+      opacity: 1;
+    }
+  }
+}
+
