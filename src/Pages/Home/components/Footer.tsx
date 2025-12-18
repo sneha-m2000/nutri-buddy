@@ -54,11 +54,12 @@ export default function FoodDeliveryFooter() {
                             {/* Company Info */}
                             <div>
                                 <div className="flex items-center gap-3 mb-6">
-                                    <img
+                                    {/* <img
                                         src="/src/assets/logo1.png"
                                         alt="Nutri Buddy Logo"
                                         className="w-24 h-24 object-contain"
-                                    />
+                                    /> */}
+                                    <img src="/logo1.png" alt="Nutri Buddy Logo" className="w-20 h-20 object-contain" />
                                     <div>
                                         <span className="text-xl font-extrabold font-heading tracking-wide text-[#306c6c]">
                                             Nutri Buddy
