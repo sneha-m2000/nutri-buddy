@@ -31,7 +31,7 @@ section::after {
 
 /* ensure body / root don't add unexpected top color */
 html, body, #root {
-  height: 100%;
+
   background: #000; /* optional — change to your site bg */
 }
 
@@ -90,3 +90,6 @@ html, body, #root {
   }
 }
 
+body {
+  overflow-x: hidden;
+}

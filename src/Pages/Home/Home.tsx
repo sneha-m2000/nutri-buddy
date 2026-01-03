@@ -48,7 +48,6 @@ import BestsellerCarousel from './components/BestsellerCarousel';
 import Footer from './components/Footer';
 import PromiseSection from './components/Promise_Section';
 import TestimonialCarousel from './components/Review';
-
 const Home = () => {
     return (
         <>

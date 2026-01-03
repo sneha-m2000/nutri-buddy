@@ -2,19 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* dark circular shadow behind plate */
-section::after {
-  content: "";
-  position: absolute;
-  width: 44rem;
-  height: 44rem;
-  right: 56%;
-  bottom: -6rem;
-  background: rgba(0, 0, 0, 0.85);
-  border-radius: 50%;
-  z-index: -1;
-  transform: translateX(10%);
-}
 
 @keyframes fadeInHeader {
   0% { opacity: 0; transform: translateY(-20px); }
@@ -31,8 +18,10 @@ section::after {
 
 /* ensure body / root don't add unexpected top color */
 html, body, #root {
-  height: 100%;
   background: #000; /* optional — change to your site bg */
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 /* ============================
    Plate Jump-in Animation
@@ -85,4 +74,7 @@ html, body, #root {
       opacity: 1;
     }
   }
+}
+body {
+  overflow-x: hidden;
 }
