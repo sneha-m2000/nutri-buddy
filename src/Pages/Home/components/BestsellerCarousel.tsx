@@ -300,8 +300,8 @@ const FoodCarousel: React.FC = () => {
                                     !loaded || !isVisible
                                         ? 'opacity-0 translate-y-10'
                                         : fadeDown
-                                        ? 'opacity-0 translate-y-6'
-                                        : 'opacity-100 translate-y-0'
+                                          ? 'opacity-0 translate-y-6'
+                                          : 'opacity-100 translate-y-0'
                                 }`}
                             >
                                 <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold font-body text-gray-400 mb-3 leading-snug">
@@ -318,8 +318,8 @@ const FoodCarousel: React.FC = () => {
                                     !loaded || !isVisible
                                         ? 'opacity-0 translate-y-10'
                                         : fadeDown
-                                        ? 'opacity-0 translate-y-6'
-                                        : 'opacity-100 translate-y-0'
+                                          ? 'opacity-0 translate-y-6'
+                                          : 'opacity-100 translate-y-0'
                                 }`}
                             >
                                 <div className="flex-1 bg-[#66b2b2]/20 border-2 border-[#66b2b2] rounded-2xl p-4 sm:p-5 md:p-6 text-center">
@@ -366,66 +366,85 @@ const FoodCarousel: React.FC = () => {
                 </div>
 
                 {/* ================= MOBILE VIEW ================= */}
+                {/* ================= MOBILE VIEW ================= */}
                 <div className="lg:hidden">
                     <div className="flex flex-col items-center gap-6">
-                        {/* Cards */}
+                        {/* Cards Container */}
                         <div
-                            className="relative w-full max-w-md min-h-[360px] sm:min-h-[420px]
-                            flex items-center justify-center overflow-hidden"
                             ref={containerRef}
                             onPointerDown={onPointerDown}
                             onPointerMove={onPointerMove}
                             onPointerUp={onPointerUp}
                             onPointerCancel={onPointerCancel}
                             style={{ touchAction: 'pan-y' }}
+                            className="
+        relative 
+        w-full 
+        max-w-sm 
+        h-[340px] 
+        xs:h-[360px] 
+        sm:h-[400px]
+        flex 
+        items-center 
+        justify-center
+        overflow-hidden
+      "
                         >
-                            <div
-                                ref={innerRef}
-                                className="w-full flex items-center justify-center relative overflow-hidden max-w-full"
-                            >
+                            <div ref={innerRef} className="relative w-full h-full flex items-center justify-center">
                                 {getVisibleCards().map((item) => {
-                                    const zIndex = 3 - item.position;
-                                    const rotation = item.position === 0 ? -5 : item.position === 2 ? 5 : 0;
-                                    const scale = 1 - item.position * 0.05;
+                                    const isCenter = item.position === 1;
+
+                                    const translateX = item.position === 0 ? '-40%' : item.position === 2 ? '40%' : '0%';
+
+                                    const scale = isCenter ? 1 : 0.85;
+                                    const opacity = isCenter ? 1 : 0.6;
+                                    const zIndex = isCenter ? 30 : 10;
 
                                     return (
                                         <div
                                             key={item.id}
-                                            className="absolute w-[90%] sm:w-[85%] max-w-[350px] aspect-square rounded-3xl shadow-2xl overflow-hidden transition-all duration-500 ease-out"
+                                            className="
+                absolute
+                w-[80%]
+                max-w-[280px]
+                h-[280px]
+                rounded-3xl
+                overflow-hidden
+                shadow-xl
+                transition-all
+                duration-500
+              "
                                             style={{
-                                                transform: `rotate(${rotation}deg) scale(${scale})`,
+                                                left: '50%',
+                                                transform: `translateX(-50%) translateX(${translateX}) scale(${scale})`,
+                                                opacity,
                                                 zIndex,
                                             }}
                                         >
                                             <img src={item.image} alt={item.name} className="w-full h-full object-cover" />
-                                            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+
+                                            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
                                         </div>
                                     );
                                 })}
                             </div>
                         </div>
 
-                        {/* Mobile Info */}
-                        <div className="w-full max-w-md px-4 text-center">
-                            <h2 className="text-xl sm:text-2xl font-bold mb-2 leading-tight text-slate-400">
-                                {foodItems[currentIndex].name}
-                            </h2>
-                            <p className="text-sm sm:text-base italic text-slate-400">
-                                {foodItems[currentIndex].description}
-                            </p>
+                        {/* Info */}
+                        <div className="w-full max-w-sm px-4 text-center">
+                            <h2 className="text-lg sm:text-xl font-bold text-slate-400">{foodItems[currentIndex].name}</h2>
 
-                            <div className="flex gap-4 mt-4">
-                                <div className="flex-1 border-2 border-[#66b2b2] rounded-xl py-2">
-                                    <div className="text-xs sm:text-sm font-semibold text-[#66b2b2]">Calories</div>
-                                    <div className="font-bold text-[#18786F] text-sm sm:text-base">
-                                        {foodItems[currentIndex].calories}
-                                    </div>
+                            <p className="text-sm italic text-slate-400 mt-1">{foodItems[currentIndex].description}</p>
+
+                            <div className="flex gap-3 mt-4">
+                                <div className="flex-1 border border-[#66b2b2] rounded-xl py-2">
+                                    <div className="text-xs text-[#66b2b2]">Calories</div>
+                                    <div className="font-bold text-[#18786F]">{foodItems[currentIndex].calories}</div>
                                 </div>
-                                <div className="flex-1 border-2 border-[#66b2b2] rounded-xl py-2">
-                                    <div className="text-xs sm:text-sm font-semibold text-[#66b2b2]">Protein</div>
-                                    <div className="font-bold text-[#18786F] text-sm sm:text-base">
-                                        {foodItems[currentIndex].protein}
-                                    </div>
+
+                                <div className="flex-1 border border-[#66b2b2] rounded-xl py-2">
+                                    <div className="text-xs text-[#66b2b2]">Protein</div>
+                                    <div className="font-bold text-[#18786F]">{foodItems[currentIndex].protein}</div>
                                 </div>
                             </div>
                         </div>

@@ -98,7 +98,9 @@ export default function TestimonialCarousel() {
                     <h3 className="text-[#5fb8a6] text-lg font-heading font-medium tracking-wider mb-3">
                         CUSTOMER TESTIMONIALS
                     </h3>
-                    <h2 className="text-white font-body text-5xl font-bold">What our Customers Say?</h2>
+                    <h2 className="text-xs sm:text-xl md:text-xl text-[#006666] font-body font-bold italic mt-4">
+                        what our customers say?
+                    </h2>
                 </div>
 
                 {/* Carousel */}

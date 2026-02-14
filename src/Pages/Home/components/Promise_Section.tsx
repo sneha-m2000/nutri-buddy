@@ -1,75 +1,33 @@
+// import { useRef } from 'react';
 // import { Droplet, Award, Hand, Clock } from 'lucide-react';
-// import promiseImg from '../../../assets/promiseImg3.jpg';
-
-// const PromiseSection = () => {
-//     const features = [
-//         {
-//             icon: <Droplet className="w-8 h-8" />,
-//             title: 'Fresh. Handpicked. Daily.',
-//             description:
-//                 'We bring you only the finest quality ingredients—sourced daily to nourish your body with pure flavors and essential nutrients.',
-//         },
-//         {
-//             icon: <Award className="w-8 h-8" />,
-//             title: 'Premium Goodness In Every Bite',
-//             description:
-//                 'From farm-fresh veggies to nutrient-rich superfoods, we ensure top-notch quality that satisfies your taste buds, nourishes your body, and delights with every mouthful.',
-//         },
-//         {
-//             icon: <Hand className="w-8 h-8" />,
-//             title: 'Clean, Fresh & Fast',
-//             description:
-//                 'Crafted in a hygienic, chef-supervised kitchen, every meal combines wholesome ingredients with vibrant flavors—showing that clean eating and great taste go hand in hand.',
-//         },
-//         {
-//             icon: <Clock className="w-8 h-8" />,
-//             title: 'Quick, Wholesome, Delicious',
-//             description:
-//                 'Enjoy speedy service without sacrificing flavor or nutrition—because eating well should never mean waiting long.',
-//         },
-//     ];
-
-//     return (
-//         <div className="min-h-screen bg-black text-white py-16 px-4 sm:px-6 lg:px-8">
-//             <div className="max-w-7xl mx-auto">
-//                 <div className="grid lg:grid-cols-2 gap-12 items-center">
-//                     {/* Left side - Content */}
-//                     <div className="ml-12">
-//                         <h3 className="text-[#66b2b2] text-sm font-semibold tracking-wider uppercase mb-4">OUR PROMISE</h3>
-//                         <h2 className="text-4xl md:text-5xl font-bold mb-12">Hygienic, Fresh & Fast</h2>
-
-//                         <div className="grid sm:grid-cols-2 gap-8">
-//                             {features.map((feature, index) => (
-//                                 <div key={index} className="space-y-3">
-//                                     <div className="text-[#66b2b2]">{feature.icon}</div>
-//                                     <h4 className="text-lg font-semibold">{feature.title}</h4>
-//                                     <p className="text-gray-400 text-sm leading-relaxed">{feature.description}</p>
-//                                 </div>
-//                             ))}
-//                         </div>
-//                     </div>
-//                     {/* Right side - Image */}
-//                     <div className="flex justify-center lg:justify-end">
-//                         <img
-//                             src={promiseImg}
-//                             alt="Promise Section Image"
-//                             className="w-full max-w-md rounded-2xl object-cover shadow-xl"
-//                         />
-//                     </div>
-//                 </div>
-//             </div>
-//         </div>
-//     );
-// };
-
-// export default PromiseSection;
-
-
-// import { Droplet, Award, Hand, Clock } from 'lucide-react';
-// import { motion } from 'framer-motion';
+// import { motion, useInView, type Variants } from 'framer-motion';
 // import promiseImg from '../../../assets/promiseImg2.jpg';
+// import bgPromise from '../../../assets/bg-promise.png';
+
+// const leftVariants: Variants = {
+//     hidden: { opacity: 0, x: -40 },
+//     visible: {
+//         opacity: 1,
+//         x: 0,
+//         transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
+//     },
+//     exit: { opacity: 0, x: -30 },
+// };
+
+// const rightVariants: Variants = {
+//     hidden: { opacity: 0, x: 40 },
+//     visible: {
+//         opacity: 1,
+//         x: 0,
+//         transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
+//     },
+//     exit: { opacity: 0, x: 30 },
+// };
 
 // const PromiseSection = () => {
+//     const sectionRef = useRef<HTMLElement | null>(null);
+//     const inView = useInView(sectionRef, { once: true, amount: 0.15 });
+
 //     const features = [
 //         {
 //             icon: <Droplet className="w-8 h-8" />,
@@ -81,179 +39,358 @@
 //             icon: <Award className="w-8 h-8" />,
 //             title: 'Premium Goodness In Every Bite',
 //             description:
-//                 'From farm-fresh veggies to nutrient-rich superfoods, we ensure top-notch quality that satisfies your taste buds, nourishes your body, and delights with every mouthful.',
+//                 'From farm-fresh veggies to nutrient-rich superfoods, we ensure top-notch quality that satisfies your taste buds.',
 //         },
 //         {
 //             icon: <Hand className="w-8 h-8" />,
 //             title: 'Clean, Fresh & Fast',
-//             description:
-//                 'Crafted in a hygienic, chef-supervised kitchen, every meal combines wholesome ingredients with vibrant flavors—showing that clean eating and great taste go hand in hand.',
+//             description: 'Crafted in a hygienic, chef-supervised kitchen with wholesome ingredients and vibrant flavors.',
 //         },
 //         {
 //             icon: <Clock className="w-8 h-8" />,
 //             title: 'Quick, Wholesome, Delicious',
-//             description:
-//                 'Enjoy speedy service without sacrificing flavor or nutrition—because eating well should never mean waiting long.',
+//             description: 'Enjoy speedy service without sacrificing flavor or nutrition.',
 //         },
 //     ];
 
 //     return (
-//         <div className="min-h-screen bg-black text-white py-16 px-4 sm:px-6 lg:px-8">
+//         <section
+//             ref={sectionRef}
+//             className="
+//         w-full
+//         py-12 sm:py-16 md:py-20
+//         px-4 sm:px-6 lg:px-8
+//     "
+//             style={{
+//                 backgroundImage: `url(${bgPromise})`,
+//                 backgroundSize: 'cover',
+//                 backgroundPosition: 'center',
+//                 backgroundRepeat: 'no-repeat',
+//             }}
+//         >
 //             <div className="max-w-7xl mx-auto">
-//                 <div className="grid lg:grid-cols-2 gap-12 items-center">
-//                     {/* LEFT CONTENT - Fade from Left */}
-//                     <motion.div
-//                         initial={{ opacity: 0, x: -60 }}
-//                         whileInView={{ opacity: 1, x: 0 }}
-//                         transition={{ duration: 0.8, ease: 'easeOut' }}
-//                         viewport={{ once: true }}
-//                         className="ml-12 h-full"
+//                 {/* HEADER */}
+//                 <motion.div
+//                     variants={leftVariants}
+//                     initial="hidden"
+//                     animate={inView ? 'visible' : 'hidden'}
+//                     className="text-center mb-10 sm:mb-12 md:mb-16"
+//                 >
+//                     <h3
+//                         className="
+//                 text-[#5fb8a6]
+//                 text-sm sm:text-base md:text-lg
+//                 font-heading
+//                 font-medium
+//                 tracking-wider
+//                 mb-2 sm:mb-3
+//             "
 //                     >
-//                         <h3 className="text-[#66b2b2] text-sm font-semibold tracking-wider uppercase mb-4">OUR PROMISE</h3>
-//                         <h2 className="text-4xl md:text-5xl font-bold mb-12">Hygienic, Fresh & Fast</h2>
+//                         OUR PROMISE
+//                     </h3>
 
-//                         <div className="grid sm:grid-cols-2 gap-8">
-//                             {features.map((feature, index) => (
-//                                 <div key={index} className="space-y-3">
-//                                     <div className="text-[#66b2b2]">{feature.icon}</div>
-//                                     <h4 className="text-lg font-semibold">{feature.title}</h4>
-//                                     <p className="text-gray-400 text-sm leading-relaxed">{feature.description}</p>
+//                     <h2
+//                         className="
+//                 text-lg sm:text-2xl md:text-3xl lg:text-4xl
+//                 text-[#006666]
+//                 font-body
+//                 font-bold
+//                 italic
+//             "
+//                     >
+//                         Hygienic, Fresh & Fast
+//                     </h2>
+//                 </motion.div>
+
+//                 {/* MAIN GRID */}
+//                 <div
+//                     className="
+//             grid
+//             grid-cols-1
+//             lg:grid-cols-2
+//             gap-10 sm:gap-12 md:gap-16
+//             items-center
+//         "
+//                 >
+//                     {/* FEATURES */}
+//                     <motion.div
+//                         variants={leftVariants}
+//                         initial="hidden"
+//                         animate={inView ? 'visible' : 'hidden'}
+//                         className="
+//                     grid
+//                     grid-cols-1
+//                     sm:grid-cols-2
+//                     gap-4 sm:gap-6
+//                 "
+//                     >
+//                         {features.map((feature, index) => (
+//                             <motion.div
+//                                 key={index}
+//                                 whileHover={{ y: -6 }}
+//                                 className="
+//                             group
+//                             bg-white/5
+//                             backdrop-blur-sm
+//                             rounded-xl
+//                             p-4 sm:p-5 md:p-6
+//                             shadow-lg
+//                             hover:shadow-xl
+//                             transition-all
+//                             duration-300
+//                             border border-white/10
+//                         "
+//                             >
+//                                 <div
+//                                     className="
+//                             text-[#66b2b2]
+//                             mb-3 sm:mb-4
+//                         "
+//                                 >
+//                                     {feature.icon}
 //                                 </div>
-//                             ))}
-//                         </div>
+
+//                                 <h4
+//                                     className="
+//                             font-semibold
+//                             text-sm sm:text-base
+//                             mb-1 sm:mb-2
+//                             text-gray-400
+//                         "
+//                                 >
+//                                     {feature.title}
+//                                 </h4>
+
+//                                 <p
+//                                     className="
+//                             text-gray-500
+//                             text-xs sm:text-sm md:text-base
+//                             leading-relaxed
+//                         "
+//                                 >
+//                                     {feature.description}
+//                                 </p>
+//                             </motion.div>
+//                         ))}
 //                     </motion.div>
 
-//                     {/* RIGHT IMAGE - Fade from Right */}
+//                     {/* IMAGE */}
 //                     <motion.div
-//                         initial={{ opacity: 0, x: 60 }}
-//                         whileInView={{ opacity: 1, x: 0 }}
-//                         transition={{ duration: 0.8, ease: 'easeOut' }}
-//                         viewport={{ once: true }}
-//                         className="flex justify-center lg:justify-end h-full"
+//                         variants={rightVariants}
+//                         initial="hidden"
+//                         animate={inView ? 'visible' : 'hidden'}
+//                         className="
+//                     flex
+//                     justify-center
+//                     lg:justify-end
+//                 "
 //                     >
-//                         <img
+//                         <motion.img
 //                             src={promiseImg}
 //                             alt="Promise Section Image"
-//                             className="w-full h-full max-w-md rounded-2xl object-cover shadow-xl"
+//                             className="
+//                         w-full
+//                         max-w-sm sm:max-w-md md:max-w-lg lg:max-w-xl
+//                         rounded-2xl
+//                         shadow-2xl
+//                         object-cover
+//                     "
+//                             whileHover={{ scale: 1.04 }}
+//                             transition={{ duration: 0.3 }}
 //                         />
 //                     </motion.div>
 //                 </div>
 //             </div>
-//         </div>
+//         </section>
 //     );
 // };
 
 // export default PromiseSection;
+
+
 
 import { useRef } from 'react';
 import { Droplet, Award, Hand, Clock } from 'lucide-react';
-import { motion, useInView, type Variants } from 'framer-motion';
+import { motion, useInView } from 'framer-motion';
 import promiseImg from '../../../assets/promiseImg2.jpg';
 import bgPromise from '../../../assets/bg-promise.png';
 
-const leftVariants: Variants = {
-    hidden: { opacity: 0, x: -40 },
-    visible: {
-        opacity: 1,
-        x: 0,
-        transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
-    },
-    exit: { opacity: 0, x: -30 },
-};
-
-const rightVariants: Variants = {
-    hidden: { opacity: 0, x: 40 },
-    visible: {
-        opacity: 1,
-        x: 0,
-        transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
-    },
-    exit: { opacity: 0, x: 30 },
-};
-
 const PromiseSection = () => {
-    const sectionRef = useRef<HTMLElement | null>(null);
-    const inView = useInView(sectionRef, { once: false, amount: 0.5 });
+    const ref = useRef(null);
+    const inView = useInView(ref, { once: true, amount: 0.2 });
 
     const features = [
         {
-            icon: <Droplet className="w-8 h-8" />,
+            icon: Droplet,
             title: 'Fresh. Handpicked. Daily.',
-            description:
-                'We bring you only the finest quality ingredients—sourced daily to nourish your body with pure flavors and essential nutrients.',
+            description: 'Only the finest ingredients sourced daily for maximum freshness and nutrition.',
         },
         {
-            icon: <Award className="w-8 h-8" />,
-            title: 'Premium Goodness In Every Bite',
-            description:
-                'From farm-fresh veggies to nutrient-rich superfoods, we ensure top-notch quality that satisfies your taste buds.',
+            icon: Award,
+            title: 'Premium Quality',
+            description: 'Every ingredient meets our highest standards of taste and purity.',
         },
         {
-            icon: <Hand className="w-8 h-8" />,
-            title: 'Clean, Fresh & Fast',
-            description: 'Crafted in a hygienic, chef-supervised kitchen with wholesome ingredients and vibrant flavors.',
+            icon: Hand,
+            title: 'Hygienic Preparation',
+            description: 'Prepared in a clean, chef-supervised kitchen you can trust.',
         },
         {
-            icon: <Clock className="w-8 h-8" />,
-            title: 'Quick, Wholesome, Delicious',
-            description: 'Enjoy speedy service without sacrificing flavor or nutrition.',
+            icon: Clock,
+            title: 'Fast & Reliable',
+            description: 'Quick service without compromising freshness or quality.',
         },
     ];
 
     return (
         <section
-            ref={sectionRef}
-            className="w-full max-w-full overflow-x-hidden py-16 px-4 sm:px-6 lg:px-8"
+            ref={ref}
+            className="
+                relative
+                w-full
+                py-14 sm:py-20 lg:py-24
+                px-4 sm:px-6 lg:px-8
+            "
             style={{
                 backgroundImage: `url(${bgPromise})`,
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
-                backgroundRepeat: 'no-repeat',
             }}
-            aria-label="Our promise"
         >
-            <div className="max-w-7xl mx-auto overflow-x-hidden">
-                <div className="grid lg:grid-cols-2 gap-12 items-center">
-                    {/* LEFT CONTENT */}
-                    <div className="overflow-hidden">
-                        <motion.div
-                            variants={leftVariants}
-                            initial="hidden"
-                            animate={inView ? 'visible' : 'exit'}
-                            className="text-center lg:text-left"
-                        >
-                            <h3 className="text-[#5fb8a6] font-heading text-lg font-semibold tracking-wider uppercase mb-4">
-                                OUR PROMISE
-                            </h3>
+            <div className="max-w-7xl mx-auto">
+                {/* HEADER */}
+                <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={inView ? { opacity: 1, y: 0 } : {}}
+                    transition={{ duration: 0.6 }}
+                    className="text-center mb-10 sm:mb-14"
+                >
+                    <h3 className="text-[#5fb8a6] text-lg font-heading font-medium tracking-wider mb-3">OUR PROMISE</h3>
 
-                            <h2 className="text-3xl sm:text-4xl md:text-5xl text-[#006666] font-body font-bold mb-12">
-                                Hygienic, Fresh & Fast
-                            </h2>
+                    <h2 className="text-xs sm:text-xl md:text-xl text-[#006666] font-body font-bold italic mt-4">
+                        Hygienic, Fresh & Fast
+                    </h2>
+                </motion.div>
 
-                            <div className="grid sm:grid-cols-2 gap-8">
-                                {features.map((feature, index) => (
-                                    <div key={index} className="space-y-3">
-                                        <div className="text-[#66b2b2]">{feature.icon}</div>
-                                        <h4 className="text-lg font-semibold">{feature.title}</h4>
-                                        <p className="text-gray-400 text-sm leading-relaxed">{feature.description}</p>
+                {/* MOBILE IMAGE FIRST */}
+                <motion.div
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={inView ? { opacity: 1, scale: 1 } : {}}
+                    transition={{ duration: 0.6 }}
+                    className="
+                        mb-10
+                        lg:hidden
+                    "
+                >
+                    <img
+                        src={promiseImg}
+                        className="
+                            w-full
+                            max-w-md
+                            mx-auto
+                            rounded-2xl
+                            shadow-xl
+                        "
+                    />
+                </motion.div>
+
+                {/* MAIN GRID */}
+                <div
+                    className="
+                    grid
+                    grid-cols-1
+                    lg:grid-cols-2
+                    gap-10 lg:gap-16
+                    items-center
+                "
+                >
+                    {/* FEATURES */}
+                    <div
+                        className="
+                        flex flex-col
+                        gap-4 sm:gap-5
+                    "
+                    >
+                        {features.map((feature, index) => {
+                            const Icon = feature.icon;
+
+                            return (
+                                <motion.div
+                                    key={index}
+                                    initial={{ opacity: 0, x: -20 }}
+                                    animate={inView ? { opacity: 1, x: 0 } : {}}
+                                    transition={{ delay: index * 0.1 }}
+                                    className="
+                                        flex
+                                        items-start
+                                        gap-4
+                                        bg-white/5
+                                        backdrop-blur-md
+                                        border border-white/10
+                                        rounded-xl
+                                        p-4 sm:p-5
+                                        hover:bg-white/10
+                                        transition mt-4
+                                    "
+                                >
+                                    {/* ICON */}
+                                    <div
+                                        className="
+                                        bg-[#66b2b2]/20
+                                        p-2
+                                        rounded-lg
+                                    "
+                                    >
+                                        <Icon className="w-5 h-5 text-[#66b2b2]" />
                                     </div>
-                                ))}
-                            </div>
-                        </motion.div>
+
+                                    {/* TEXT */}
+                                    <div>
+                                        <h4
+                                            className="
+                                            font-semibold
+                                            text-gray-200
+                                            text-sm sm:text-base
+                                        "
+                                        >
+                                            {feature.title}
+                                        </h4>
+
+                                        <p
+                                            className="
+                                            text-gray-400
+                                            text-xs sm:text-sm
+                                            mt-1
+                                        "
+                                        >
+                                            {feature.description}
+                                        </p>
+                                    </div>
+                                </motion.div>
+                            );
+                        })}
                     </div>
 
-                    {/* RIGHT IMAGE */}
-                    <div className="overflow-hidden flex justify-center lg:justify-end">
-                        <motion.img
-                            variants={rightVariants}
-                            initial="hidden"
-                            animate={inView ? 'visible' : 'exit'}
+                    {/* DESKTOP IMAGE */}
+                    <motion.div
+                        initial={{ opacity: 0, x: 40 }}
+                        animate={inView ? { opacity: 1, x: 0 } : {}}
+                        transition={{ duration: 0.6 }}
+                        className="
+                            hidden lg:flex
+                            justify-end
+                        "
+                    >
+                        <img
                             src={promiseImg}
-                            alt="Promise Section Image"
-                            className="w-full max-w-md rounded-2xl object-contain shadow-xl"
-                            whileHover={{ scale: 1.02 }}
+                            className="
+                                w-full
+                                max-w-lg
+                                rounded-2xl
+                                shadow-2xl
+                            "
                         />
-                    </div>
+                    </motion.div>
                 </div>
             </div>
         </section>
