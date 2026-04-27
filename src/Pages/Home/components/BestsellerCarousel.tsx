@@ -1,11 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react';
-import bgImg from '../../../assets/bg.jpg';
-import ProteinPowerBowl from '../../../assets/protien power bowl.jpg'
-import greendetox from '../../../assets/green-detox.jpg'
-import grilledchickensalad from '../../../assets/grilled chicken salad.jpg'
-import salmon from '../../../assets/grilled-salmon-with-asparagus-greek-salad.jpg'
-import acai from '../../../assets/acai-dessert.jpg'
-import turkeywrap from '../../../assets/turkey wrap.jpg';
+import bgImg from '../../../assets/bg.webp';
+import ProteinPowerBowl from '../../../assets/protien power bowl.webp';
+import greendetox from '../../../assets/green-detox.webp';
+import grilledchickensalad from '../../../assets/grilled chicken salad.webp';
+import salmon from '../../../assets/grilled-salmon-with-asparagus-greek-salad.webp';
+import acai from '../../../assets/acai-dessert.webp';
+import turkeywrap from '../../../assets/turkey wrap.webp';
 import paneertandoori from '../../../assets/tandoori-paneer.jpeg';
 
 type FoodItem = {
