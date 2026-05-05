@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Menu, X, ShoppingCart, User } from 'lucide-react';
 import HoverButton from '../ui/Button2/Button2';
-import logo from '../../../public/logo1.webp';
+// import logo from '../../../public/logo1.webp';
 
 const navItems = [
     { name: 'Home', href: '#home' },
@@ -50,11 +50,11 @@ const NutriBuddyHeader = () => {
                 <div className="flex items-center justify-between h-14 sm:h-16 md:h-20">
                     {/* LOGO */}
                     <div className="flex items-center gap-2 sm:gap-3">
-                       <img
-  src={logo}
-  alt="Nutri Buddy Logo"
-  className="w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 object-contain"
-/>
+                        <img
+                            src="/logo1.webp"
+                            alt="Nutri Buddy Logo"
+                            className="w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 object-contain"
+                        />
 
                         <div className="leading-tight">
                             <h1

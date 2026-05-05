@@ -6,7 +6,7 @@ import grilledchickensalad from '../../../assets/grilled chicken salad.webp';
 import salmon from '../../../assets/grilled-salmon-with-asparagus-greek-salad.webp';
 import acai from '../../../assets/acai-dessert.webp';
 import turkeywrap from '../../../assets/turkey wrap.webp';
-import paneertandoori from '../../../assets/tandoori-paneer.jpeg';
+import paneertandoori from '../../../assets/tandoori-paneer.webp';
 
 type FoodItem = {
     id: number;
@@ -124,6 +124,7 @@ const FoodCarousel: React.FC = () => {
 
         return () => {
             if (sectionRef.current) {
+                // eslint-disable-next-line react-hooks/exhaustive-deps
                 observer.unobserve(sectionRef.current);
             }
         };

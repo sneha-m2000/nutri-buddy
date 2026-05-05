@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import bgImage from '../../../assets/best-sellers-bg.webp';
-import footerBg from '../../../assets/smoke-background-empty-dark-room.webp';
+import footerBg from '../../../assets/smoke-background-empty-dark-room.jpg';
 
 
 import { Facebook, Instagram, Linkedin, Twitter, Youtube, MapPin, Phone, Mail } from 'lucide-react';
