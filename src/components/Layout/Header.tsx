@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Menu, X, ShoppingCart, User } from 'lucide-react';
 import HoverButton from '../ui/Button2/Button2';
-// import logo from '../../../public/logo1.webp';
+import Cart from '../../Pages/Home/components/Cart';
 
 const navItems = [
     { name: 'Home', href: '#home' },
@@ -12,6 +12,7 @@ const navItems = [
 ];
 
 const NutriBuddyHeader = () => {
+    const [isCartOpen, setIsCartOpen] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [activeLink, setActiveLink] = useState('Home');
@@ -91,7 +92,13 @@ const NutriBuddyHeader = () => {
 
                     {/* DESKTOP ACTIONS */}
                     <div className="hidden md:flex items-center gap-2 lg:gap-4">
-                        <button className="text-[#66b2b2] hover:text-white transition p-2">
+                        {/* <button className="text-[#66b2b2] hover:text-white transition p-2">
+                            <ShoppingCart className="w-5 h-5" />
+                        </button> */}
+                        <button
+                            onClick={() => setIsCartOpen(true)}
+                            className="text-[#66b2b2] hover:text-white transition p-2"
+                        >
                             <ShoppingCart className="w-5 h-5" />
                         </button>
                         <button className="text-[#66b2b2] hover:text-white transition p-2">
@@ -140,6 +147,8 @@ const NutriBuddyHeader = () => {
                     </nav>
                 </div>
             )}
+
+            <Cart isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
         </header>
     );
 };
