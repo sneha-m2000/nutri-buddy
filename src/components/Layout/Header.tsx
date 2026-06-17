@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react';
-import { Menu, X, ShoppingCart, User } from 'lucide-react';
-import HoverButton from '../ui/Button2/Button2';
+import {  ShoppingCart, } from 'lucide-react';
+// import HoverButton from '../ui/Button2/Button2';
+import { FaUser } from "react-icons/fa";
 import Cart from '../../Pages/Home/components/Cart';
+import ProfileDropdown from '../../Pages/Home/components/ProfileDropdown';
 
 const navItems = [
     { name: 'Home', href: '#home' },
@@ -16,6 +18,7 @@ const NutriBuddyHeader = () => {
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [activeLink, setActiveLink] = useState('Home');
+    const [isProfileOpen, setIsProfileOpen] = useState(false);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -97,24 +100,35 @@ const NutriBuddyHeader = () => {
                         </button> */}
                         <button
                             onClick={() => setIsCartOpen(true)}
-                            className="text-[#66b2b2] hover:text-white transition p-2"
+                            className={`${isScrolled ? 'text-[#66b2b2]' : 'text-black'} hover:text-white transition p-2`}
                         >
                             <ShoppingCart className="w-5 h-5" />
                         </button>
-                        <button className="text-[#66b2b2] hover:text-white transition p-2">
-                            <User className="w-5 h-5" />
-                        </button>
-                        <HoverButton text="Order Now" onClick={() => console.log('Order clicked')} />
-                    </div>
+                        {/* <button className={`${isScrolled ? 'text-[#66b2b2]' : 'text-black'} hover:text-white transition p-2`}>
+                            <FaUser className="w-5 h-5" />
+                        </button> */}
+                        <div className="relative">
+                            <button
+                                onMouseEnter={() => setIsProfileOpen(true)}
+                                className={`${
+                                    isScrolled ? 'text-[#66b2b2]' : 'text-black'
+                                } hover:text-[#66b2b2] transition p-2`}
+                            >
+                                <FaUser className="w-5 h-5" />
+                            </button>
 
+                            <ProfileDropdown isOpen={isProfileOpen} onClose={() => setIsProfileOpen(false)} />
+                        </div>
+                        {/* <HoverButton text="Order Now" onClick={() => console.log('Order clicked')} /> */}
+                    </div>
                     {/* MOBILE MENU BUTTON */}
-                    <button
+                    {/* <button
                         onClick={() => setIsMobileMenuOpen((prev) => !prev)}
                         className="md:hidden p-2 text-cyan-700"
                         aria-label="Toggle Menu"
                     >
                         {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-                    </button>
+                    </button> */}
                 </div>
             </div>
 
@@ -138,11 +152,11 @@ const NutriBuddyHeader = () => {
                                 <ShoppingCart className="w-5 h-5" />
                             </button>
                             <button className="text-cyan-100 hover:text-cyan-400 p-2">
-                                <User className="w-5 h-5" />
+                                <FaUser className="w-5 h-5" />
                             </button>
-                            <button className="flex-1 bg-gradient-to-r from-cyan-500 to-teal-500 text-slate-900 px-4 py-2 rounded-lg font-Caveat shadow-lg">
+                            {/* <button className="flex-1 bg-gradient-to-r from-cyan-500 to-teal-500 text-slate-900 px-4 py-2 rounded-lg font-Caveat shadow-lg">
                                 Order Now
-                            </button>
+                            </button> */}
                         </div>
                     </nav>
                 </div>
